@@ -1,1 +1,14 @@
-<p>{{name}}</p>
+<section id="tasks">
+    <header><p>{{name}}'s tasks</p></header>
+    <menu>
+        <button>Add Tasks</button>
+    </menu>
+    <ul>
+        @for (task of selectedUserTasks; track task.id) {
+            <li>
+                <app-task [task]="task" (complete)="onCompleteTask($event)"></app-task>
+            </li>
+        }
+        
+    </ul>
+</section>
