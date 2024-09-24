@@ -3,6 +3,7 @@ import { DUMMY_USERS } from '../dummy-users';
 import { TaskComponent } from "./task/task.component";
 import { AddtaskComponent } from "../addtask/addtask.component";
 import { NgIf } from '@angular/common';
+import { NewTaskData } from './task/task.model';
 
 @Component({
   selector: 'app-tasks',
@@ -99,6 +100,19 @@ tasks = [
   }
 
   onCancelAddTask() {
+    this.isDataVisible = false;
+  }
+
+  onAddTask(taskData : NewTaskData) {
+    this.tasks.unshift({
+      id: new Date().getTime().toString(),
+      userId: this.userId,
+      title: taskData.title,
+      summary: taskData.summary,
+      dueDate: taskData.date
+
+
+    })
     this.isDataVisible = false;
   }
 

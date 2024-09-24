@@ -3,7 +3,7 @@
     <menu>
         <button (click)="onStartaddTask()">Add Tasks</button>
         @if (isDataVisible) {
-            <app-addtask (cancel)="onCancelAddTask()"></app-addtask>
+            <app-addtask (cancel)="onCancelAddTask()" (add)="onAddTask($event)"></app-addtask>
         }
     </menu>
     <ul>
