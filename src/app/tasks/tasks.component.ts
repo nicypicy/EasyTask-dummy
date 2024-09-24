@@ -1,17 +1,22 @@
 import { Component, input, Input } from '@angular/core';
 import { DUMMY_USERS } from '../dummy-users';
 import { TaskComponent } from "./task/task.component";
+import { AddtaskComponent } from "../addtask/addtask.component";
+import { NgIf } from '@angular/common';
 
 @Component({
   selector: 'app-tasks',
   standalone: true,
-  imports: [TaskComponent],
+  imports: [TaskComponent, AddtaskComponent, NgIf],
   templateUrl: './tasks.component.html',
   styleUrl: './tasks.component.css'
 })
 export class TasksComponent {
+  
 @Input({required: true}) name!:string;
 @Input({required: true}) userId!:string;
+
+
   
 tasks = [
     {
@@ -86,5 +91,16 @@ tasks = [
   onCompleteTask(id : string){
     this.tasks = this.tasks.filter((task) => task.id !== id)
   }
+
+  isDataVisible = false;
+
+  onStartaddTask() {
+    this.isDataVisible = true;
+  }
+
+  onCancelAddTask() {
+    this.isDataVisible = false;
+  }
+
   
 }

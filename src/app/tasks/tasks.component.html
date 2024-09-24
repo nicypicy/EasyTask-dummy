@@ -1,7 +1,10 @@
 <section id="tasks">
     <header><p>{{name}}'s tasks</p></header>
     <menu>
-        <button>Add Tasks</button>
+        <button (click)="onStartaddTask()">Add Tasks</button>
+        @if (isDataVisible) {
+            <app-addtask (cancel)="onCancelAddTask()"></app-addtask>
+        }
     </menu>
     <ul>
         @for (task of selectedUserTasks; track task.id) {
