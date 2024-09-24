@@ -1,6 +1,10 @@
 import { Component , Input, input, computed, Output, EventEmitter} from '@angular/core';
 
-
+interface User {
+  id: string;
+  avatar: string;
+  name: string;
+}
 
 
 @Component({
@@ -11,9 +15,7 @@ import { Component , Input, input, computed, Output, EventEmitter} from '@angula
   styleUrl: './user.component.css'
 })
 export class UserComponent {
-  @Input({required: true}) id!:string;
-  @Input({required: true})  avatar!: String;
-  @Input({required: true})  name!: String;
+  @Input({required: true}) user!: User;
   @Output() select = new EventEmitter;
 
   //select = output<string>();
@@ -23,7 +25,7 @@ export class UserComponent {
 
 
   get imagePath() {
-    return "/users/" + this.avatar;
+    return "/users/" + this.user.avatar;
   }
 
 //   imagePath = computed(()=> {
@@ -31,6 +33,6 @@ export class UserComponent {
 // });
 
 onSelectUser() {
- this.select.emit(this.id);
+ this.select.emit(this.user.id);
 }
 }
