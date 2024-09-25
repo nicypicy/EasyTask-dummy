@@ -91,9 +91,11 @@ export class TasksService {
             summary: taskData.summary,
             dueDate: taskData.date
         })
+        this.saveTasks();
     }
     removeTask(id:string){
-        this.tasks = this.tasks.filter((task)=> task.id !== id)
+        this.tasks = this.tasks.filter((task)=> task.id !== id);
+        this.saveTasks();
     }
 
     private saveTasks(){
