@@ -3,13 +3,13 @@
     <menu>
         <button (click)="onStartaddTask()">Add Tasks</button>
         @if (isDataVisible) {
-            <app-addtask (cancel)="onCancelAddTask()" (add)="onAddTask($event)"></app-addtask>
+            <app-addtask [userId]="userId" (close)="onCloseAddTask()" ></app-addtask>
         }
     </menu>
     <ul>
         @for (task of selectedUserTasks; track task.id) {
             <li>
-                <app-task [task]="task" (complete)="onCompleteTask($event)"></app-task>
+                <app-task [task]="task"></app-task>
             </li>
         }
         
